@@ -3,15 +3,15 @@ from plover.system.english_stenotype import *
 
 
 
-KEYS = (
-        '#', '^-', '+-','1','2','3','4','5','6','7','8','9','0',
-
-  'S-', 'T-', 'K-', 'P-', 'W-', 'H-', 'R-',
-  'A-', 'O-',
-  '*',
-  '-E', '-U',
-  '-F', '-R', '-P', '-B', '-L', '-G', '-T', '-S', '-D', '-Z',
-)
+# KEYS = (
+#         '#', '^-', '+-','1','2','3','4','5','6','7','8','9','0',
+# 
+#   'S-', 'T-', 'K-', 'P-', 'W-', 'H-', 'R-',
+#   'A-', 'O-',
+#   '*',
+#   '-E', '-U',
+#   '-F', '-R', '-P', '-B', '-L', '-G', '-T', '-S', '-D', '-Z',
+# )
 
 SUFFIX_KEYS = ( '-D', '-S', '-G', '-DZ')
 
@@ -57,10 +57,9 @@ ORTHOGRAPHY_RULES = [
 
 
 
-DICTIONARIES_ROOT = 'asset:plover_french_extended_stenotype:dictionaries'
+DICTIONARIES_ROOT = 'asset:Pluvier_system:dictionaries'
 DEFAULT_DICTIONARIES = (
-    'orthofr.json',
-    'spelling.json',
-    'dicofr.json',
-    'verbs.json'
+    'Pluvier_user.json',
+    'Pluvier_commands.json',
+    'Pluvier_main.json',
 )
