@@ -3,15 +3,14 @@ from plover.system.english_stenotype import *
 
 
 
-# KEYS = (
-#         '#', '^-', '+-','1','2','3','4','5','6','7','8','9','0',
-# 
-#   'S-', 'T-', 'K-', 'P-', 'W-', 'H-', 'R-',
-#   'A-', 'O-',
-#   '*',
-#   '-E', '-U',
-#   '-F', '-R', '-P', '-B', '-L', '-G', '-T', '-S', '-D', '-Z',
-# )
+KEYS = (
+    '#',
+    'S-', 'T-', 'K-', 'P-', 'W-', 'H-', 'R-',
+    'A-', 'O-',
+    '*',
+    '-E', '-U',
+    '-F', '-R', '-P', '-B', '-L', '-G', '-T', '-S', '-D', '-Z',
+)
 
 SUFFIX_KEYS = ( '-D', '-S', '-G', '-DZ')
 
@@ -57,7 +56,7 @@ ORTHOGRAPHY_RULES = [
 
 
 
-DICTIONARIES_ROOT = 'asset:Pluvier_system:dictionaries'
+DICTIONARIES_ROOT = 'asset:pluvier:dictionaries'
 DEFAULT_DICTIONARIES = (
     'Pluvier_user.json',
     'Pluvier_commands.json',
