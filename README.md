@@ -55,6 +55,29 @@ Among other things, it details for (almost) every entry the following infomation
 
 tThese two resources are the backbone of Pluvier's dictionary generation, allowing us to write a "script" (bit of an understatement) applying the rules of the theory to the Lexique database, spitting out a json dictionary to be used with Plover.
 
+### How to run the dictionnary generation?
+
+Clone the project using
+
+~~~bash
+git clone http://github.com/ThMazur/Pluvier
+cd Pluvier
+~~~
+
+Create and activate your virtual environment like so
+
+~~~bash
+python -m venv venv
+source venv/bin/activate
+python -m pip install -r requirement_dev.txt
+~~~
+
+and run the generation
+
+~~~bash
+python -m src.generate_dictionnary
+~~~
+
 ## Design objectives
 
 - Provide a French theory and dictionary for everyday use, using the standard Ireland steno layout.

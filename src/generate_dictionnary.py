@@ -4,7 +4,11 @@ import json
 import pandas as pd
 from tqdm import tqdm
 
-from constants import *
+from src.constants import *
+
+def encode_syllable(syllable):
+    stroke = syllable
+    return 'TE'
 
 def generate_entry(word):
     syllables = word.syll.split('-')

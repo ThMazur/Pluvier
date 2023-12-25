@@ -144,3 +144,20 @@ SOUNDS_RHS = {
     "isjOn": "EUGZ",
     "isjOn": "EUGZ",
 }
+
+BRIEFS = {
+    'ST-': 'cet',
+    'SET': 'cette',
+    '-T': 'très',
+    '-TS': 'être',
+    'STE': 'société',
+    'STO': "c'est au",
+    "STA": "c'est à",
+    'S*S': "c'est cet",
+    'S*ES': "c'est cette",
+    'AS': 'à ce',
+    'ET': 'été',
+    'AET': 'a été',
+    'TWAET': 'tu as été',
+    'S-T': "c'est très",
+}
