@@ -39,3 +39,18 @@ def test_lesson_one_encoding(input_w, expected):
 )
 def test_full_conflict_resolution_lesson_1(input_w, expected):
     assert encode_syllable(input_w) == expected
+
+@pytest.mark.parametrize(
+    ('input_w', 'expected'),
+    (
+        ('pape', 'PAP'),
+        ('tape', 'TAP'),
+        ('sape', 'SAP'),
+        ('passe', 'PAS'),
+        ('patte', 'PAT'),
+        ('pot', 'PO'),
+        ('puce', 'PUS')
+    )
+)
+def test_lesson_two_encoding(input_w, expected):
+    assert encode_syllable(input_w) == expected
