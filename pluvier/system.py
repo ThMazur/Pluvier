@@ -58,7 +58,7 @@ ORTHOGRAPHY_RULES = [
 
 DICTIONARIES_ROOT = 'asset:pluvier:dictionaries'
 DEFAULT_DICTIONARIES = (
-    'Pluvier_user.json',
-    'Pluvier_commands.json',
-    'Pluvier_main.json',
+    'user.json',
+    'commands.json',
+    'main.json',
 )
