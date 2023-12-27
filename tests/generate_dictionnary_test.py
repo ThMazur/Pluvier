@@ -95,3 +95,17 @@ def test_lesson_two_encoding(input_w, expected):
 )
 def test_lesson_three_encoding(input_w, expected):
     assert encode_syllable(input_w) == expected
+
+@pytest.mark.parametrize(
+    ('input_w', 'expected'),
+    (
+        ('va', 'VA'),
+        ('vue', 'VU'),
+        ('vu', 'V*U'),
+        ('vote', 'VOT'),
+        ('rave', 'RAF'),
+        ('savent', 'SAF'),
+    )
+)
+def test_lesson_four_encoding(input_w, expected):
+    assert encode_syllable(input_w) == expected
