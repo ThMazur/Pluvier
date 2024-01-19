@@ -13,10 +13,14 @@ def write_df(df, PATH: str = "resources/verified_filtered.csv"):
     df.to_csv(PATH, sep=";")
 
 def compare_strings(string1, string2):
-    result = True
-    for char in string1:
-        result &= char in string2
-    return result
+    if string1 == "":
+        return True
+    if string2 == "":
+        return False
+    if string1[0] == string2[0]:
+        return compare_strings(string1[1:], string2[1:])
+    else:
+        return compare_strings(string1, string2[1:])
 
 def left_replace_key(df, key, stroke):
     notation = STROKE_ORDER.split(key)
@@ -29,20 +33,26 @@ def left_replace_key(df, key, stroke):
         after = key.join(notation[1:])
         behind = notation[0]
 
-    simpleregexp = regexp = re.compile(f"^({key})(?=[{after}])")
-    if behind == "":
-        regexp = re.compile(f"^({key})(?=[{after}])")
-    else:
-        regexp = re.compile(f"(?<=[{behind}])({key})(?=[{after}])")
-
     def repla(Transcription):
         strokes = Transcription.split("/")
         res = []
         for curr in strokes:
-            if len(curr) > 0 and curr[0] == key:
-                res.append(simpleregexp.sub(stroke, curr))
+            partitions = curr.split(key)
+            if len(partitions) == 3:
+                res.append(
+                    f"{partitions[0]}{stroke}{key.join(partitions[1:])}"
+                )
+            elif len(partitions) == 2:
+                condition = True
+                condition &= compare_strings(partitions[0], behind)
+                condition &= compare_strings(partitions[1], after)
+                res.append(
+                    stroke.join(partitions) if condition else curr
+                )
+            elif len(partitions) == 1:
+                res.append(curr)
             else:
-                res.append(regexp.sub(stroke,curr))
+                raise KeyError(f"Stroke {curr} contains three {key}")
 
         return "/".join(res)
 
@@ -61,17 +71,27 @@ def right_replace_key(df, key, stroke):
         behind = key.join(notation[:2])
         after = key.join(notation[2:])
 
-    regexp = re.compile(f"(?<=[{behind}])({key})(?=[{after}]|$)")
-    simpleregexp = re.compile(f"^({key})(?=[{after}]|$)")
 
     def repla(Transcription):
         strokes = Transcription.split("/")
         res = []
         for curr in strokes:
-            if len(curr) > 0 and curr[0] == key:
-                res.append(simpleregexp.sub(stroke, curr))
+            partitions = curr.split(key)
+            if len(partitions) == 3:
+                res.append(
+                    f"{key.join(partitions[:2])}{stroke}{partitions[2]}"
+                )
+            elif len(partitions) == 2:
+                condition = True
+                condition &= compare_strings(partitions[0], behind)
+                condition &= compare_strings(partitions[1], after)
+                res.append(
+                    stroke.join(partitions) if condition else curr
+                )
+            elif len(partitions) == 1:
+                res.append(curr)
             else:
-                res.append(regexp.sub(stroke, curr))
+                raise KeyError(f"Stroke {curr} contains three {key}")
 
         return "/".join(res)
 
