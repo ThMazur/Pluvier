@@ -9,7 +9,7 @@ STROKE_ORDER = "JZSNGDFTYXKMBPVWLHRAO*\-IEUVFRMNJPKXBLGTSDZ"
 def load_df(PATH: str = "resources/verified.csv"):
     return pd.read_csv(PATH, sep=";")
 
-def write_df(df, PATH: str = "resources/verified_filtered.csv"):
+def write_df(df, PATH: str = "resources/verified_validated.csv"):
     df.to_csv(PATH, sep=";")
 
 def compare_strings(string1, string2):
@@ -109,7 +109,6 @@ def check_df_validity(df):
 
         if not valid_stroke:
             raise KeyError(f"{row.Word} maps to an invalid stroke {row.Transcription} at {row.Index}.")
-            # print(f"<<{row.Word}>> maps to an invalid stroke {row.Transcription}")
 
     return True
 
@@ -137,12 +136,9 @@ def main():
     df = right_replace_key(df, "X", "BGS")
     df = right_replace_key(df, "J", "PBTPLG")
 
-    write_df(df)
-
     check_df_validity(df)
 
-
-# 
+    write_df(df)
 
 if __name__ == "__main__":
     exit(main())
